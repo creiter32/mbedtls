@@ -240,6 +240,7 @@ int mbedtls_x509write_csr_set_ns_cert_type( mbedtls_x509write_csr *ctx,
  */
 int mbedtls_x509write_csr_set_extension( mbedtls_x509write_csr *ctx,
                                  const char *oid, size_t oid_len,
+				 int critical,
                                  const unsigned char *val, size_t val_len );
 
 /**
