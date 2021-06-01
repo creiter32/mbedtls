@@ -39,6 +39,7 @@ my $psa_header_dir = 'include/psa';
 my $source_dir = 'library';
 my $test_source_dir = 'tests/src';
 my $test_header_dir = 'tests/include/test';
+my $test_drivers_header_dir = 'tests/include/test/drivers';
 
 my @thirdparty_header_dirs = qw(
     3rdparty/everest/include/everest
@@ -116,6 +117,7 @@ sub check_dirs {
         && -d $source_dir
         && -d $test_source_dir
         && -d $test_header_dir
+        && -d $test_drivers_header_dir
         && -d $programs_dir;
 }
 
@@ -158,6 +160,9 @@ sub gen_app {
     if( $appname eq "ssl_client2" or $appname eq "ssl_server2" or
         $appname eq "query_compile_time_config" ) {
         $srcs .= "\r\n    <ClCompile Include=\"..\\..\\programs\\test\\query_config.c\" \/>";
+    }
+    if( $appname eq "ssl_client2" or $appname eq "ssl_server2" ) {
+        $srcs .= "\r\n    <ClCompile Include=\"..\\..\\programs\\ssl\\ssl_test_lib.c\" \/>";
     }
 
     my $content = $template;
@@ -262,6 +267,7 @@ sub main {
                        $mbedtls_header_dir,
                        $psa_header_dir,
                        $test_header_dir,
+                       $test_drivers_header_dir,
                        $source_dir,
                        @thirdparty_header_dirs,
                       );

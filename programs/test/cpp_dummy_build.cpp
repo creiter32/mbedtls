@@ -44,6 +44,7 @@
 #include "mbedtls/cipher_internal.h"
 #include "mbedtls/cmac.h"
 #include "mbedtls/compat-1.3.h"
+#include "mbedtls/config_psa.h"
 #include "mbedtls/ctr_drbg.h"
 #include "mbedtls/debug.h"
 #include "mbedtls/des.h"
@@ -108,6 +109,10 @@
 #if defined(MBEDTLS_MEMORY_BUFFER_ALLOC_C)
 #include "mbedtls/memory_buffer_alloc.h"
 #endif
+
+#include "psa/crypto.h"
+#include "psa/crypto_se_driver.h"
+#include "../library/psa_crypto_its.h"
 
 int main()
 {

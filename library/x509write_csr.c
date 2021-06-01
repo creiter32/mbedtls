@@ -83,7 +83,7 @@ int mbedtls_x509write_csr_set_subject_name( mbedtls_x509write_csr *ctx,
 
 int mbedtls_x509write_csr_set_extension( mbedtls_x509write_csr *ctx,
                                  const char *oid, size_t oid_len,
-				 int critical,
+                                 int critical,
                                  const unsigned char *val, size_t val_len )
 {
     return mbedtls_x509_set_extension( &ctx->extensions, oid, oid_len,
